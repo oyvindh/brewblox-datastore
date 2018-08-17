@@ -16,6 +16,5 @@ COPY ./config/* ./
 ENTRYPOINT [ \
     "./tini", "-s", "--", \
     "json-server", \
-    "--host", "0.0.0.0", \
-    "--routes", "routes.json" \
+    "--host", "0.0.0.0" \
     ]
