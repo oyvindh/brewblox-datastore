@@ -6,7 +6,9 @@ EXPOSE 3000
 
 WORKDIR /app
 
-RUN npm i -g json-server \
+RUN apt-get update \
+    && apt-get install -y curl \
+    && npm i -g json-server \
     && curl -sL --output ./tini \
     https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TINI_ARCH} \
     && chmod +x ./tini
@@ -14,7 +16,7 @@ RUN npm i -g json-server \
 COPY ./config/* ./
 
 ENTRYPOINT [ \
-    "./tini", "-s", "--", \
+    "/app/tini", "-s", "--", \
     "json-server", \
     "--host", "0.0.0.0" \
     ]
