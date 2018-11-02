@@ -14,7 +14,7 @@ RUN npm i -g json-server \
 COPY ./config/* ./
 
 ENTRYPOINT [ \
-    "./tini", "-s", "--", \
+    "/app/tini", "-s", "--", \
     "json-server", \
     "--host", "0.0.0.0" \
     ]
